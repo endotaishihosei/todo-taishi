@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="tab pb-3">
+    <div class="tab-item, text-center">
+      <p class="display-2">Board</p>
+    </div>
+  </div>
+  
+  <% @boards.each do |board| %>
+    <%= link_to board_path(id: board.id) do %>
+      <div class="card">
+        <div class="card-title text-success">         <p class="display-5">タイトル: <%= board.title %></p>
+        </div>
+        <div class="card-name text-primary">
+          <p class="display-5">名前: <%= board.name %></p>
+        </div>
+        <div class="card-content text-danger">
+          <p class="display-5">内容: <%= board.content %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
