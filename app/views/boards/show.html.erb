@@ -9,7 +9,12 @@
 
   <div class="board_detail_actions">
     <div class="dropdown">
-      <a class="btn btn-success" href="#">編集する</a>
+      <div class="dropdown-content">
+        <%= link_to  edit_board_path, class: 'btn btn-success' do %>
+          <i class="fa fa-edit"></i>
+          <span>編集</span>
+        <% end %>
+      </div>
     </div>
   </div>
 
