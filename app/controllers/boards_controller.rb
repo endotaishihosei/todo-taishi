@@ -18,6 +18,7 @@ class BoardsController < ApplicationController
     else
       flash.now[:error] = '保存に失敗'
       render :new
+      # creare action中でnew.htmlを表示させている
     end
 
   end
