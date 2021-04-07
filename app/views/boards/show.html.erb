@@ -7,6 +7,12 @@
     <p>内容： <%= @board.content %></p>
   </div>
 
+  <div class="board_detail_actions">
+    <div class="dropdown">
+      <a class="btn btn-success" href="#">編集する</a>
+    </div>
+  </div>
+
   <%= link_to root_path do %>
     <div class="float_btn">
       <i class="fa fa-arrow-left"></i>
