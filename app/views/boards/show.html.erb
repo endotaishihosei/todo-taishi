@@ -7,6 +7,17 @@
     <p>内容： <%= @board.content %></p>
   </div>
 
+  <div class="board_detail_actions">
+    <div class="dropdown">
+      <div class="dropdown-content">
+        <%= link_to  edit_board_path, class: 'btn btn-success' do %>
+          <i class="fa fa-edit"></i>
+          <span>編集</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
   <%= link_to root_path do %>
     <div class="float_btn">
       <i class="fa fa-arrow-left"></i>

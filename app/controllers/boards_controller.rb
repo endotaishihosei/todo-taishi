@@ -20,7 +20,11 @@ class BoardsController < ApplicationController
       render :new
       # creare action中でnew.htmlを表示させている
     end
+  end
 
+  def edit
+    # new actionとの違い => editはidが渡ってくる
+    @board = Board.find(params[:id])
   end
 
   private
