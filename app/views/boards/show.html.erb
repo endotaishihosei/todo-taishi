@@ -10,9 +10,15 @@
   <div class="board_detail_actions">
     <div class="dropdown">
       <div class="dropdown-content">
-        <%= link_to  edit_board_path, class: 'btn btn-success' do %>
+        <%= link_to  edit_board_path(@board), class: 'btn btn-success' do %>
           <i class="fa fa-edit"></i>
           <span>編集</span>
+        <% end %>
+      </div>
+      <div class="dropdown-content">
+        <%= link_to  board_path(@board), data: {method: 'delete', confirm: '本当に削除するの？'}, class: 'btn btn-success' do %>
+          <i class="fa fa-trash"></i>
+          <span>削除</span>
         <% end %>
       </div>
     </div>
