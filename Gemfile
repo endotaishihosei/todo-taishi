@@ -28,6 +28,7 @@ gem 'devise'
 gem 'rubocop', require: false
 gem 'faker'
 gem 'hamlit'
+gem 'annotate'
 
 
 gem "bootstrap-sass", "~>3.3.6"
