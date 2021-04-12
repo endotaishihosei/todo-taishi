@@ -14,6 +14,8 @@ class Board < ApplicationRecord
   validates :name, presence: true, length: {minimum: 3}
   validates :content, presence: true
 
+  validates :content, uniqueness: true
+
   def display_created_at
     I18n.l(self.created_at, format: :default)
   end
