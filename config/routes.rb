@@ -6,5 +6,10 @@ Rails.application.routes.draw do
 
   root to: 'boards#index'
 
+<<<<<<< HEAD
+  resources :boards
+  # onlyオプションを消しておく
+=======
   resources :boards, only: [:show, :new, :create, :edit, :update]
+>>>>>>> master
 end
