@@ -43,6 +43,16 @@ class BoardsController < ApplicationController
     redirect_to root_path, notice: '削除に成功しました'
   end
 
+  def update
+    @board = Board.find(params[:id])
+    if @board.update(board_params)
+      redirect_to board_path, notice: '変更に成功'
+    else
+      flash.now[:error] = '保存に失敗しました'
+      render :edit
+    end
+  end
+
   private
     def board_params
       params.require(:board).permit(:title, :name, :content)
