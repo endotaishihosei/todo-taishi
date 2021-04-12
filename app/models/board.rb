@@ -11,9 +11,11 @@
 #
 class Board < ApplicationRecord
   validates :title, presence: true, length: {minimum: 3}
-  validates :name, presence: true, length: {minimum: 3}
-  validates :content, presence: true
+  validates :title, format: { with: /\A(?!\@)/ }
 
+  validates :name, presence: true, length: {minimum: 3}
+
+  validates :content, presence: true
   validates :content, uniqueness: true
 
   def display_created_at
