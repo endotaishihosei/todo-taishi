@@ -1,0 +1,22 @@
+.container
+  .tab.pb-3
+    .text-center{:class => "tab-item,"}
+      %p.display-2 Board
+  - @boards.each do |board|
+    = link_to board_path(id: board.id) do
+      .card
+        .card-title.text-success
+          %p.display-5
+            タイトル: #{board.title}
+        .card-name.text-primary
+          %p.display-5
+            名前: #{board.name}
+        .card-content.text-danger
+          %p.display-5
+            内容: #{board.content}
+        %div
+          %p taishi0616
+          %p= board.display_created_at
+  = link_to new_board_path do
+    .float_btn
+      %i.fa.fa-plus

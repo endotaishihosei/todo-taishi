@@ -1,0 +1,25 @@
+.board
+  %h1.board_title
+    ＜#{@board.title}＞
+  .board_name
+    %p
+      名前： #{@board.name}
+  .board_content
+    %p
+      内容： #{@board.content}
+  %div
+    %p [taishi0616]
+    %p
+      [#{@board.display_created_at}]
+  .board_detail_actions
+    .dropdown
+      .dropdown-content
+        = link_to  edit_board_path(@board), class: 'btn btn-success' do
+          %i.fa.fa-edit
+          %span 編集
+        = link_to  root_path(@board), method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'btn btn-success' do
+          %i.fa.fa-remove
+          %span 削除
+  = link_to root_path do
+    .float_btn
+      %i.fa.fa-arrow-left
