@@ -1,10 +1,11 @@
 class BoardsController < ApplicationController
+  before_action :set_article
+
   def index
     @boards = Board.all
   end
 
   def show
-    @board = Board.find(params[:id])
   end
 
   def new
@@ -24,12 +25,15 @@ class BoardsController < ApplicationController
 
   def edit
     # new actionとの違い => editはidが渡ってくる
-    @board = Board.find(params[:id])
   end
 
   private
     def board_params
       params.require(:board).permit(:title, :name, :content)
+    end
+
+    def set_article
+      @board = Board.find(params[:id])
     end
 
 end
