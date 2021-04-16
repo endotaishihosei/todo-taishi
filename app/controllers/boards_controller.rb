@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show, :edit, :update]
+  before_action :set_board, only: [:show]
 
   def index
     @boards = Board.all
@@ -9,11 +9,11 @@ class BoardsController < ApplicationController
   end
 
   def new
-    @board = Board.new 
+    @board = current_user.boards.build
   end
 
   def create
-    @board = Board.new(board_params)
+    @board = current_user.boards.build(board_params)
     if @board.save
       redirect_to board_path(@board), notice: '保存に成功'
     else
@@ -25,12 +25,13 @@ class BoardsController < ApplicationController
 
   def edit
     # new actionとの違い => editはidが渡ってくる
+    @board = current_user.boards.find(params[:id])
   end
 
   def update
-    @board = Board.find(params[:id])
+    @board = current_user.boards.find(params[:id])
     if @board.update(board_params)
-      redirect_to board_path(@article), notice: '更新できました'
+      redirect_to board_path(@board), notice: '更新できました'
     else
       flash.now[:error] = '更新できませんでした'
       render :edit
@@ -38,20 +39,20 @@ class BoardsController < ApplicationController
   end
 
   def destroy
-    board = Board.find(params[:id])
+    board = current_user.boards.find(params[:id])
     board.destroy!
     redirect_to root_path, notice: '削除に成功しました'
   end
 
-  def update
-    @board = Board.find(params[:id])
-    if @board.update(board_params)
-      redirect_to board_path, notice: '変更に成功'
-    else
-      flash.now[:error] = '保存に失敗しました'
-      render :edit
-    end
-  end
+  # def update
+  #   @board = Board.find(params[:id])
+  #   if @board.update(board_params)
+  #     redirect_to board_path, notice: '変更に成功'
+  #   else
+  #     flash.now[:error] = '保存に失敗しました'
+  #     render :edit
+  #   end
+  # end
 
   private
     def board_params

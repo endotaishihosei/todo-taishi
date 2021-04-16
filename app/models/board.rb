@@ -8,6 +8,11 @@
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :bigint
+#
+# Indexes
+#
+#  index_boards_on_user_id  (user_id)
 #
 class Board < ApplicationRecord
   validates :title, presence: true, length: {minimum: 3}
@@ -19,6 +24,8 @@ class Board < ApplicationRecord
   validates :content, uniqueness: true
 
   validate :validate_title_and_content_length
+
+  belongs_to :user, dependent: :destroy
 
   def display_created_at
     I18n.l(self.created_at, format: :default)
