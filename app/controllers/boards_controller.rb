@@ -31,7 +31,7 @@ class BoardsController < ApplicationController
   def update
     @board = current_user.boards.find(params[:id])
     if @board.update(board_params)
-      redirect_to board_path(@article), notice: '更新できました'
+      redirect_to board_path(@board), notice: '更新できました'
     else
       flash.now[:error] = '更新できませんでした'
       render :edit
@@ -39,7 +39,7 @@ class BoardsController < ApplicationController
   end
 
   def destroy
-    board = Board.find(params[:id])
+    board = current_user.boards.find(params[:id])
     board.destroy!
     redirect_to root_path, notice: '削除に成功しました'
   end
